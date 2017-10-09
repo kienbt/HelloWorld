@@ -9,5 +9,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+		
+		int i = 0;
+		if (1+1 == 2)
+			i = 10;
+		i += i;
     }
 }
