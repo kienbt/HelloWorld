@@ -13,6 +13,6 @@ public class MainActivity extends AppCompatActivity {
 		int i = 0;
 		if (1+1 == 2)
 			i = 10;
-		i += i;
+		
     }
 }
