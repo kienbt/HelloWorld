@@ -17,10 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-	aaptOptions {
+	/*aaptOptions {
         cruncherEnabled = false
 		useNewCruncher = false
-    }
+    }*/
 }
 
 dependencies {
@@ -31,4 +31,29 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.0.1"
+    }
+}
+apply plugin: "org.sonarqube"
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "MyProject"
+        property "sonar.projectKey", "com.rikkei.myproject"
+        property "sonar.host.url", "http://localhost:9000"
+        property "sonar.sources", "src"
+        property "sonar.import_unknown_files", "true"
+        property "sonar.language", "java"
+        property "sonar.profile", "Android Lint"
+        property "sonar.android.lint.report", "/data/jenkins/workspace/SonarJobs/PearsonWriterSonar/writer40/build/outputs/lint-results-debug.xml"
+    }
 }
